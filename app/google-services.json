@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "980733911707",
+    "project_id": "chatduck-ca8fa",
+    "storage_bucket": "chatduck-ca8fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980733911707:android:deffe8583710be622b5c3e",
+        "android_client_info": {
+          "package_name": "duc.thanhhoa.chatduck"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiu9cubtYZVrCUKMg5yEArxslYRqe7nyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
