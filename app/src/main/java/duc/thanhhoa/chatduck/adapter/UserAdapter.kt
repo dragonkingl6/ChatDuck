@@ -1,4 +1,4 @@
-package duc.thanhhoa.adapter
+package duc.thanhhoa.chatduck.adapter
 
 import android.view.LayoutInflater
 import android.view.View

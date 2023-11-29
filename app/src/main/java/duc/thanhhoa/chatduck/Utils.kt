@@ -1,4 +1,4 @@
-package duc.thanhhoa
+package duc.thanhhoa.chatduck
 
 import com.google.firebase.auth.FirebaseAuth
 

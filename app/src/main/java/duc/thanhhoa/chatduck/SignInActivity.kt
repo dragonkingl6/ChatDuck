@@ -26,10 +26,10 @@ class SignInActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-//        if (auth.currentUser!=null){
-//            startActivity(Intent(this,MainActivity::class.java))
-//            //finish()
-//        }
+        if (auth.currentUser!=null){
+            startActivity(Intent(this,MainActivity::class.java))
+            //finish()
+        }
         progressDialogSignIn= ProgressDialog(this)
 
 

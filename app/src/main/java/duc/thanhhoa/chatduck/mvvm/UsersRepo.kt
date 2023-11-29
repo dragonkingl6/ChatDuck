@@ -3,7 +3,7 @@ package duc.thanhhoa.chatduck.mvvm
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
-import duc.thanhhoa.Utils
+import duc.thanhhoa.chatduck.Utils
 import duc.thanhhoa.chatduck.modal.Users
 
 class UsersRepo {
