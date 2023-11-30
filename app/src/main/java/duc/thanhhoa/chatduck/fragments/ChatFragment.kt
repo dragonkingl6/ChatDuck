@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +18,9 @@ import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 import duc.thanhhoa.chatduck.R
 import duc.thanhhoa.chatduck.Utils
+import duc.thanhhoa.chatduck.adapter.MessageAdapter
 import duc.thanhhoa.chatduck.databinding.FragmentChatBinding
+import duc.thanhhoa.chatduck.modal.Messages
 import duc.thanhhoa.chatduck.mvvm.ChatAppViewModel
 
 
@@ -28,6 +31,7 @@ class ChatFragment : Fragment() {
     lateinit var binding : FragmentChatBinding
 
     lateinit var viewModel : ChatAppViewModel
+    lateinit var adapter : MessageAdapter
     lateinit var toolbar: Toolbar
 
 
@@ -88,8 +92,28 @@ class ChatFragment : Fragment() {
 
         }
 
+        viewModel.getMessages(args.users.userid!!).observe(viewLifecycleOwner, Observer {
+
+            initRecyclerView(it)
+        })
 
 
+
+
+    }
+
+    private fun initRecyclerView(it: List<Messages>) {
+
+        adapter = MessageAdapter()
+
+        val layoutManager = LinearLayoutManager(context)
+
+        binding.messagesRecyclerView1.layoutManager = layoutManager
+        layoutManager.stackFromEnd = true
+
+        adapter.setMessageList(it)
+        adapter.notifyDataSetChanged()
+        binding.messagesRecyclerView1.adapter = adapter
 
     }
 

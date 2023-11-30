@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import duc.thanhhoa.chatduck.MyApplication
 import duc.thanhhoa.chatduck.SharedPrefs
 import duc.thanhhoa.chatduck.Utils
+import duc.thanhhoa.chatduck.modal.Messages
 import duc.thanhhoa.chatduck.modal.Users
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,6 +21,7 @@ class ChatAppViewModel: ViewModel() {
     val firestore= FirebaseFirestore.getInstance()
 
     val usersRepo= UsersRepo()
+    val messageRepo= MessageRepo()
 
     init {
         getCurrentUser()
@@ -96,8 +98,16 @@ class ChatAppViewModel: ViewModel() {
                 firestore.collection("Conversation${receiver}")
                     .document(Utils.getUidLoggedIn())
                     .update("message", message.value!!, "time", Utils.getTime(), "person", name.value!!)
-            }
 
-        message.value = ""
+                if (taskmessage.isSuccessful) {
+
+                    message.value = ""
+
+                }
+            }
+    }
+
+    fun getMessages(friendid: String): LiveData<List<Messages>> {
+        return messageRepo.getMessages(friendid)
     }
 }
