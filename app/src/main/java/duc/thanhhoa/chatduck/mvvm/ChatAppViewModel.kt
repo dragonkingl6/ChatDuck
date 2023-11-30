@@ -9,6 +9,7 @@ import duc.thanhhoa.chatduck.MyApplication
 import duc.thanhhoa.chatduck.SharedPrefs
 import duc.thanhhoa.chatduck.Utils
 import duc.thanhhoa.chatduck.modal.Messages
+import duc.thanhhoa.chatduck.modal.RecentChats
 import duc.thanhhoa.chatduck.modal.Users
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,6 +23,7 @@ class ChatAppViewModel: ViewModel() {
 
     val usersRepo= UsersRepo()
     val messageRepo= MessageRepo()
+    val recentChatRepo= ChatListRepo()
 
     init {
         getCurrentUser()
@@ -90,7 +92,7 @@ class ChatAppViewModel: ViewModel() {
                     "message" to message.value!!,
                     "friendsimage" to friendimage,
                     "name" to friendname,
-                    "person" to "you"
+                    "person" to name.value!!
                 )
 
                 firestore.collection("Conversation${Utils.getUidLoggedIn()}").document(receiver).set(hashMapForRecent)
@@ -109,5 +111,9 @@ class ChatAppViewModel: ViewModel() {
 
     fun getMessages(friendid: String): LiveData<List<Messages>> {
         return messageRepo.getMessages(friendid)
+    }
+
+    fun getRecentChat(): LiveData<List<RecentChats>>{
+        return recentChatRepo.getAllChatList()
     }
 }

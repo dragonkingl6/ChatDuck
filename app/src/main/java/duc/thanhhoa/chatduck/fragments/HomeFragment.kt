@@ -23,12 +23,15 @@ import duc.thanhhoa.chatduck.adapter.UserAdapter
 import duc.thanhhoa.chatduck.R
 import duc.thanhhoa.chatduck.SignInActivity
 import duc.thanhhoa.chatduck.adapter.OnItemClickListener
+import duc.thanhhoa.chatduck.adapter.OnRecentChatListener
+import duc.thanhhoa.chatduck.adapter.RecentChatAdapter
 import duc.thanhhoa.chatduck.databinding.FragmentHomeBinding
+import duc.thanhhoa.chatduck.modal.RecentChats
 import duc.thanhhoa.chatduck.modal.Users
 import duc.thanhhoa.chatduck.mvvm.ChatAppViewModel
 
 
-class HomeFragment : Fragment() , OnItemClickListener{
+class HomeFragment : Fragment() , OnItemClickListener, OnRecentChatListener{
     lateinit var rv: RecyclerView
     lateinit var userAdapter: UserAdapter
     lateinit var userViewModel: ChatAppViewModel
@@ -36,6 +39,7 @@ class HomeFragment : Fragment() , OnItemClickListener{
     lateinit var  fbauth: FirebaseAuth
     lateinit var toolbar: Toolbar
     lateinit var circleImageView: CircleImageView
+    lateinit var recentChatAdapter: RecentChatAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -83,6 +87,19 @@ class HomeFragment : Fragment() , OnItemClickListener{
                 .load(it)
                 .into(circleImageView)
         })
+
+        recentChatAdapter= RecentChatAdapter()
+
+        userViewModel.getRecentChat().observe(viewLifecycleOwner, Observer {
+
+            homeBinding.rvRecentChats.layoutManager =LinearLayoutManager(activity)
+
+            recentChatAdapter.setOnRecentChatList(it)
+            homeBinding.rvRecentChats.adapter= recentChatAdapter
+
+        })
+
+        recentChatAdapter.setOnRecentChatListener(this)
     }
 
     override fun onUserSelected(position: Int, users: Users) {
@@ -91,6 +108,13 @@ class HomeFragment : Fragment() , OnItemClickListener{
         view?.findNavController()?.navigate(action)
 
         Log.e("HomeFragment", "onUserSelected: ${users.username}")
+    }
+
+    override fun getRecentChat(position: Int, recentChats: RecentChats) {
+
+        val action = HomeFragmentDirections.actionHomeFragmentToChatFromHomeFragment(recentChats)
+        view?.findNavController()?.navigate(action)
+
     }
 
 

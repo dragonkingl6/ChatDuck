@@ -7,7 +7,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="duc.thanhhoa.chatduck.fragments.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
@@ -21,7 +22,9 @@
     <fragment
         android:id="@+id/chatFragment"
         android:name="duc.thanhhoa.chatduck.fragments.ChatFragment"
-        android:label="ChatFragment" >
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat"
+        >
         <action
             android:id="@+id/action_chatFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -32,7 +35,8 @@
     <fragment
         android:id="@+id/settingFragment"
         android:name="duc.thanhhoa.chatduck.fragments.SettingFragment"
-        android:label="SettingFragment" >
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting">
         <action
             android:id="@+id/action_settingFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -40,9 +44,13 @@
     <fragment
         android:id="@+id/chatFromHomeFragment"
         android:name="duc.thanhhoa.chatduck.fragments.ChatFromHomeFragment"
-        android:label="ChatFromHomeFragment" >
+        android:label="ChatFromHomeFragment"
+        tools:layout="@layout/fragment_chatfrom_home">
         <action
             android:id="@+id/action_chatFromHomeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="recentChat"
+            app:argType="duc.thanhhoa.chatduck.modal.RecentChats" />
     </fragment>
 </navigation>
