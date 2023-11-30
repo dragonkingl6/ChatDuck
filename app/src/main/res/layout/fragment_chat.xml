@@ -19,7 +19,7 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolBarChat"
+        android:id="@+id/toolBarChat1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/midnightblue">
@@ -29,7 +29,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back"
-            android:id="@+id/chatBackBtn"
+            android:id="@+id/chatBackBtn1"
             android:layout_marginEnd="10dp"/>
 
 
@@ -47,7 +47,7 @@
                 android:src="@drawable/person"
                 app:civ_border_width="2dp"
                 app:civ_border_color="#FE2C54"
-                android:id="@+id/chatImageViewUser"/>
+                android:id="@+id/chatImageViewUser1"/>
 
 
             <TextView
@@ -58,7 +58,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="10dp"
                 android:textColor="#FFFFFF"
-                android:id="@+id/chatUserName"
+                android:id="@+id/chatUserName1"
                 android:fontFamily="@font/nunito_bold"/>
 
 
@@ -79,20 +79,20 @@
         android:layout_marginTop="37dp"
         android:layout_marginLeft="131dp"
         android:textColor="#FFFFFF"
-        android:id="@+id/chatUserStatus"
+        android:id="@+id/chatUserStatus1"
         android:fontFamily="@font/nunito"/>
 
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/messagesRecyclerView"
+        android:id="@+id/messagesRecyclerView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolBarChat"
+        android:layout_below="@id/toolBarChat1"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_above="@id/layoutChatbox"
+        android:layout_above="@id/layoutChatbox1"
         android:layout_marginBottom="10dp"
         />
 
@@ -101,7 +101,7 @@
 
 
     <LinearLayout
-        android:id="@+id/layoutChatbox"
+        android:id="@+id/layoutChatbox1"
         android:layout_alignParentBottom="true"
 
 
@@ -112,7 +112,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextMessage"
+            android:id="@+id/editTextMessage1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -127,7 +127,7 @@
             android:maxLines="6" />
 
         <Button
-            android:id="@+id/sendBtn"
+            android:id="@+id/sendBtn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
