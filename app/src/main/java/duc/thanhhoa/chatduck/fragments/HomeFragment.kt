@@ -107,12 +107,13 @@ class HomeFragment : Fragment() , OnItemClickListener, OnRecentChatListener{
     }
 
     override fun onUserSelected(position: Int, users: Users) {
-
-        val action = HomeFragmentDirections.actionHomeFragmentToChatFragment(users)
-        view?.findNavController()?.navigate(action)
+        // Chuyển hướng đến ChatFragment
+        val actionToChatFragment = HomeFragmentDirections.actionHomeFragmentToChatFragment(users)
+        view?.findNavController()?.navigate(actionToChatFragment)
 
         Log.e("HomeFragment", "onUserSelected: ${users.username}")
     }
+
 
     override fun getRecentChat(position: Int, recentChats: RecentChats) {
 

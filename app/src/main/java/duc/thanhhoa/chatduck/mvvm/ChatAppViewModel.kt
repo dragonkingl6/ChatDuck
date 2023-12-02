@@ -1,5 +1,6 @@
 package duc.thanhhoa.chatduck.mvvm
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,8 +13,14 @@ import duc.thanhhoa.chatduck.Utils
 import duc.thanhhoa.chatduck.modal.Messages
 import duc.thanhhoa.chatduck.modal.RecentChats
 import duc.thanhhoa.chatduck.modal.Users
+import duc.thanhhoa.chatduck.notifications.entity.NotificationData
+import duc.thanhhoa.chatduck.notifications.entity.PushNotification
+import duc.thanhhoa.chatduck.notifications.entity.Token
+import duc.thanhhoa.chatduck.notifications.network.Retrofitlnstance
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class ChatAppViewModel: ViewModel() {
     val name= MutableLiveData<String>()
@@ -24,7 +31,12 @@ class ChatAppViewModel: ViewModel() {
 
     val usersRepo= UsersRepo()
     val messageRepo= MessageRepo()
+    var token: String? = null
     val recentChatRepo= ChatListRepo()
+
+    val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        throwable.printStackTrace()
+    }
 
     init {
         getCurrentUser()
@@ -71,7 +83,8 @@ class ChatAppViewModel: ViewModel() {
             "sender" to sender,
             "receiver" to receiver,
             "message" to message.value!!,
-            "time" to Utils.getTime()
+            "time" to Utils.getTime(),
+            "date" to Date(),
         )
 
         val uniqueId = listOf(sender, receiver).sorted()
@@ -104,12 +117,68 @@ class ChatAppViewModel: ViewModel() {
                     .document(Utils.getUidLoggedIn())
                     .update("message", message.value!!, "time", Utils.getTime(), "person", name.value!!)
 
-                if (taskmessage.isSuccessful) {
+                //notification
 
-                    message.value = ""
+                firestore.collection("Tokens").document(receiver).addSnapshotListener { value, error ->
+
+
+                    if (value != null && value.exists()) {
+
+
+                        val tokenObject = value.toObject(Token::class.java)
+
+
+                        token = tokenObject?.token
+
+
+                        val loggedInUsername =
+                            mysharedPrefs.getValue("username")!!.split("\\s".toRegex())[0]
+
+
+
+                        if (message.value!!.isNotEmpty() && receiver.isNotEmpty()) {
+
+                            PushNotification(
+                                NotificationData(loggedInUsername, message.value!!), token!!
+                            ).also {
+                                sendNotification(it)
+                            }
+
+                        } else {
+
+
+                            Log.e("ChatAppViewModel", "NO TOKEN, NO NOTIFICATION")
+                            Log.e("okeoke", "NO TOKEN, NO NOTIFICATION ${token}")
+                        }
+
+
+                    }
+
+                    Log.e("ViewModel", token.toString())
+
+
+
+                    if (taskmessage.isSuccessful){
+
+                        message.value = ""
+
+
+
+                    }
+
 
                 }
             }
+    }
+
+    fun sendNotification(notification: PushNotification) = viewModelScope.launch {
+        try {
+            val response = Retrofitlnstance.api.postNotification(notification)
+        } catch (e: Exception) {
+
+            Log.e("ViewModelError", e.toString())
+            // showToast(e.message.toString())
+        }
     }
 
     fun getMessages(friendid: String): LiveData<List<Messages>> {

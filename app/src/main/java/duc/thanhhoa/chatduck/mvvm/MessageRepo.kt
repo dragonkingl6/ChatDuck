@@ -7,6 +7,7 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.toObject
 import duc.thanhhoa.chatduck.Utils
 import duc.thanhhoa.chatduck.modal.Messages
+import java.util.Date
 
 class MessageRepo {
     private val firestore = FirebaseFirestore.getInstance()
@@ -19,7 +20,7 @@ class MessageRepo {
         uniqueId.joinToString(separator = "")
 
         firestore.collection("Messages").document(uniqueId.toString()).collection("chats")
-            .orderBy("time", Query.Direction.ASCENDING)
+            .orderBy("date", Query.Direction.ASCENDING)
             .addSnapshotListener{ value, error ->
                 if(error!=null){
                     return@addSnapshotListener
@@ -31,6 +32,14 @@ class MessageRepo {
                     value.documents.forEach{documentSnapshot ->
 
                         val messageModal = documentSnapshot.toObject(Messages::class.java)
+
+
+                        if (messageModal != null && messageModal.date == null) {
+                            val time = messageModal.time?.toLongOrNull()
+                            if (time != null) {
+                                messageModal.date = Date(time)
+                            }
+                        }
 
                         if(messageModal!!.sender.equals(Utils.getUidLoggedIn())&& messageModal.receiver.equals(friendid)
                             || messageModal!!.sender.equals(friendid)&& messageModal.receiver.equals(Utils.getUidLoggedIn())

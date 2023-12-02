@@ -4,34 +4,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_marginTop="30dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/chatapp"/>
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/chatapp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text=""
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito_bold"
-            android:textSize="16sp"
-            android:layout_marginBottom="20dp"/>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="20dp"/>
 
             <TextView
                 android:id="@+id/titleText"
@@ -44,6 +42,9 @@
                 android:text="Login to your account"
                 android:layout_marginLeft="10dp"
                 android:textSize="30sp" />
+
+            <!-- Đối với ô email -->
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="fill_parent"
@@ -65,7 +66,11 @@
                     android:paddingStart="10dp"
                     android:paddingEnd="0dp"
                     tools:background="@android:color/transparent" />
+
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Đối với ô password -->
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editTextPasswordInputLayout"
@@ -75,7 +80,8 @@
                 android:layout_margin="10dp"
                 android:background="@android:color/transparent"
                 android:padding="0dp"
-                app:boxBackgroundColor="@android:color/transparent">
+                app:boxBackgroundColor="@android:color/transparent"
+                app:passwordToggleEnabled="true">
 
                 <EditText
                     android:id="@+id/loginetpassword"
@@ -90,29 +96,71 @@
                     android:paddingStart="10dp"
                     android:paddingEnd="0dp"
                     tools:background="@android:color/transparent" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            android:id="@+id/loginButton"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:text="Login"
-            android:textSize="16sp"
-            android:layout_marginTop="25dp"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:id="@+id/signInTextToSignUp"
-            android:layout_height="wrap_content"
-            android:text="Create a new account"
-            android:fontFamily="@font/nunito_bold"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"/>
+                <!-- Nút Login -->
+                <Button
+                    android:id="@+id/loginButton"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:text="Login"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- LinearLayout cho ImageButtons -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <!-- ImageButton 1 -->
+                    <!-- ImageButton 1 -->
+                    <ImageButton
+                        android:id="@+id/imageGoogle"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_google"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="Description for ImageButton 1"
+                        android:layout_marginEnd="60dp"
+                        android:scaleType="fitCenter" /> <!-- Hoặc sử dụng "centerCrop" tùy thuộc vào mong muốn của bạn -->
 
 
+                    <!-- ImageButton 2 -->
+                    <!-- ImageButton 2 -->
+                    <ImageButton
+                        android:id="@+id/imageFb"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_fb"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:layout_marginStart="60dp"
+                        android:contentDescription="Description for ImageButton 2"
+                        android:scaleType="fitCenter" /> <!-- Hoặc sử dụng "centerCrop" tùy thuộc vào mong muốn của bạn -->
 
-    </LinearLayout>
-</ScrollView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/signInTextToSignUp"
+                android:layout_height="wrap_content"
+                android:text="Create a new account"
+                android:fontFamily="@font/nunito_bold"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+    </ScrollView>
 </layout>

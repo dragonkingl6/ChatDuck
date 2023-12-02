@@ -1,6 +1,7 @@
 package duc.thanhhoa.chatduck.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import duc.thanhhoa.chatduck.adapter.MessageAdapter
 import duc.thanhhoa.chatduck.databinding.FragmentChatfromHomeBinding
 import duc.thanhhoa.chatduck.modal.Messages
 import duc.thanhhoa.chatduck.mvvm.ChatAppViewModel
+import kotlin.math.log
 
 
 class ChatFromHomeFragment : Fragment() {
@@ -29,6 +31,8 @@ class ChatFromHomeFragment : Fragment() {
     lateinit var viewModel : ChatAppViewModel
     lateinit var toolbar: Toolbar
     lateinit var adapter : MessageAdapter
+
+    lateinit var circleImageView: CircleImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +50,7 @@ class ChatFromHomeFragment : Fragment() {
         toolbar = view.findViewById(R.id.toolBarChat)
         val circleImageView = toolbar.findViewById<CircleImageView>(R.id.chatImageViewUser)
         val textViewName = toolbar.findViewById<TextView>(R.id.chatUserName)
+        val textViewStatus = view.findViewById<TextView>(R.id.chatUserStatus)
 
 
         args = ChatFromHomeFragmentArgs.fromBundle(requireArguments())
@@ -60,7 +65,9 @@ class ChatFromHomeFragment : Fragment() {
 
         Glide.with(view.getContext()).load(args.recentChat.friendsimage!!).placeholder(R.drawable.person).dontAnimate().into(circleImageView);
         textViewName.setText(args.recentChat.name)
-        //textViewStatus.setText(args.users.status)
+//        textViewStatus.setText(args.recentChat.status)
+        Log.e("Status", "onViewCreated: ${args.recentChat.status}" )
+        Log.e("Status", "onViewCreated: ${args.recentChat.status}" )
 
 
 
@@ -94,6 +101,7 @@ class ChatFromHomeFragment : Fragment() {
 
 
         })
+
 
 
 

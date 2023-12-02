@@ -21,6 +21,7 @@ import duc.thanhhoa.chatduck.Utils
 import duc.thanhhoa.chatduck.adapter.MessageAdapter
 import duc.thanhhoa.chatduck.databinding.FragmentChatBinding
 import duc.thanhhoa.chatduck.modal.Messages
+import duc.thanhhoa.chatduck.modal.RecentChats
 import duc.thanhhoa.chatduck.mvvm.ChatAppViewModel
 
 
@@ -100,8 +101,10 @@ class ChatFragment : Fragment() {
 
 
 
+
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun initRecyclerView(it: List<Messages>) {
 
         adapter = MessageAdapter()
