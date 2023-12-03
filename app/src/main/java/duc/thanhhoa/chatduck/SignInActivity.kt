@@ -42,10 +42,10 @@ class SignInActivity : AppCompatActivity() {
             password= signinBinding.loginetpassword.text.toString()
 
             if (signinBinding.loginetemail.text.isEmpty()){
-                Toast.makeText(this, "loi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email lỗi", Toast.LENGTH_SHORT).show()
             }
             if (signinBinding.loginetpassword.text.isEmpty()){
-                Toast.makeText(this, "loi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Password Lỗi", Toast.LENGTH_SHORT).show()
             }
             if (signinBinding.loginetemail.text.isNotEmpty() && signinBinding.loginetpassword.text.isNotEmpty()){
 
@@ -64,7 +64,7 @@ class SignInActivity : AppCompatActivity() {
                 startActivity(Intent(this,MainActivity::class.java))
             }else{
                 progressDialogSignIn.dismiss()
-                Toast.makeText(this, "loi 2", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Vui lỏng thử lại", Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener {
             when(it){

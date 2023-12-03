@@ -39,14 +39,14 @@ class SignUpActivity : AppCompatActivity() {
 
             if (signUpBinding.signUpEtName.text.isEmpty()){
 
-                Toast.makeText(this, "loi 5", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Tên lỗi", Toast.LENGTH_SHORT).show()
             }
             if (signUpBinding.signUpEmail.text.isEmpty()){
-                Toast.makeText(this, "loi 5", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email lỗi", Toast.LENGTH_SHORT).show()
 
             }
             if (signUpBinding.signUpPassword.text.isEmpty()){
-                Toast.makeText(this, "loi 5", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Password lỗi", Toast.LENGTH_SHORT).show()
 
             }
             if (signUpBinding.signUpEtName.text.isNotEmpty()

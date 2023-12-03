@@ -32,7 +32,7 @@
             android:textSize="15sp"
             android:textColor="@android:color/white"
             android:id="@+id/show_message"
-            android:background="@drawable/rounded_rectangle_primary"/>
+            android:background="@drawable/rounded_corner_right"/>
 
 
 

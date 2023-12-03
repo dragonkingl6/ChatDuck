@@ -1,0 +1,5 @@
+<!-- res/drawable/rounded_corner.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/mau_tin_nhan" />
+    <corners android:radius="90dp" /><!-- Điều chỉnh bán kính để bo tròn -->
+</shape>

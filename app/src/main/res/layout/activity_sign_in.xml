@@ -6,6 +6,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:background="@color/yellow_200"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -19,7 +20,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/chatapp"/>
+                android:src="@drawable/logoduck"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,7 +40,7 @@
                 android:gravity="start"
                 android:fontFamily="@font/nunito"
                 android:textColor="@color/black"
-                android:text="Login to your account"
+                android:text="Đăng nhập"
                 android:layout_marginLeft="10dp"
                 android:textSize="30sp" />
 
@@ -65,7 +66,7 @@
                     android:maxLength="25"
                     android:paddingStart="10dp"
                     android:paddingEnd="0dp"
-                    tools:background="@android:color/transparent" />
+                    tools:background="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +96,7 @@
                     android:maxLength="25"
                     android:paddingStart="10dp"
                     android:paddingEnd="0dp"
-                    tools:background="@android:color/transparent" />
+                    tools:background="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,7 +156,7 @@
                 android:layout_width="wrap_content"
                 android:id="@+id/signInTextToSignUp"
                 android:layout_height="wrap_content"
-                android:text="Create a new account"
+                android:text="Tạo tài khoản"
                 android:fontFamily="@font/nunito_bold"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black"/>

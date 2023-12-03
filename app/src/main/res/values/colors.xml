@@ -16,4 +16,13 @@
     <color name="white">#FFFFFFFF</color> <!-- Màu trắng -->
     <color name="back">#CDDC39</color> <!-- Màu trắng -->
 
+    <!-- Màu cho tin nhắn bạn gửi đi -->
+    <color name="mau_tin_gui_di">#FFD700</color>
+
+    <!-- Màu cho tin nhắn bạn nhận -->
+    <color name="mau_tin_nhan">#FFFFFF</color>
+
+
+    <color name="mau_nen_tin_chat">#E6E6E6</color>
+
 </resources>

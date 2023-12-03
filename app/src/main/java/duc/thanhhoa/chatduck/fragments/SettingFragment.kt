@@ -73,21 +73,15 @@ class SettingFragment : Fragment() {
 
         settingBinding.settingUpdateImage.setOnClickListener {
 
-            val options = arrayOf<CharSequence>("Take Photo", "Choose from Gallery", "Cancel")
+            val options = arrayOf<CharSequence>("Chọn ảnh thư viện", "Hủy")
             val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Choose your profile picture")
+            builder.setTitle("Chọn anh đại diện")
             builder.setItems(options) { dialog, item ->
                 when {
-                    options[item] == "Take Photo" -> {
-
-                        takePhotoWithCamera()
-
-
-                    }
-                    options[item] == "Choose from Gallery" -> {
+                    options[item] == "Chọn ảnh đại diện" -> {
                         pickImageFromGallery()
                     }
-                    options[item] == "Cancel" -> dialog.dismiss()
+                    options[item] == "Hủy" -> dialog.dismiss()
                 }
             }
             builder.show()

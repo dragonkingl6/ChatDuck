@@ -19,9 +19,9 @@
         android:id="@+id/show_message"
         android:text="Hello"
         android:visibility="visible"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:background="@drawable/rounded_rectangle_secondary"/>
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:background="@drawable/rounded_corner"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
